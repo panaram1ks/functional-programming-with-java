@@ -5,14 +5,17 @@ public class FP01Functional {
     public static void main(String[] args) {
 
         List<Integer> integers = List.of(12, 9, 13, 4, 6, 2, 4, 12, 15);
-        printOddNumbers(integers);
+//        printOddNumbers(integers);
+//        printSquaresOfEvenNumbersInListFunctional(integers);
+//        printCubesOfOddNumbers(integers);
 ////        printAllNumbersInListFunctional(integers);
 //        printEvenNumbersInListFunctional(integers);
 
         List<String> courses = List.of("Spring", "Spring Boot", "API", "Microservices", "AWS", "PCF", "Azure", "Docker", "Kubernetes");
 //        printAllCoursesIndividually(courses);
 //        printCoursesContainSpring(courses);
-        printCoursesNameHasAtleast4Letters(courses);
+//        printCoursesNameHasAtleast4Letters(courses);
+        printCountOfLettersInEachCourse(courses);
     }
 
     private static void printAllNumbersInListFunctional(List<Integer> numbers) {
@@ -31,6 +34,22 @@ public class FP01Functional {
                 .forEach(System.out::println);//Method reference
     }
 
+    private static void printSquaresOfEvenNumbersInListFunctional(List<Integer> numbers) {
+        numbers.stream()
+                .filter(number -> number % 2 == 0)
+                // mapping x -> x * x
+                .map(number -> number * number)
+                .forEach(System.out::println);
+    }
+
+    private static void printCubesOfOddNumbers(List<Integer> numbers){
+        numbers.stream()
+                .filter(number -> number % 2 == 0)
+                // mapping x -> x * x
+                .map(number -> number * number * number)
+                .forEach(System.out::println);
+    }
+
     private static void printOddNumbers(List<Integer> numbers){
         numbers.stream().filter(num -> num % 2 != 0).forEach(System.out::println);
     }
@@ -45,6 +64,10 @@ public class FP01Functional {
 
     private static  void printCoursesNameHasAtleast4Letters(List<String> courses){
         courses.stream().filter(word -> word.length() >= 4).forEach(System.out::println);
+    }
+
+    private static  void printCountOfLettersInEachCourse(List<String> courses){
+        courses.stream().map(word ->  word.length()).forEach(System.out::println);
     }
 
 }
